@@ -26,15 +26,11 @@ const Lyrics = () => {
             }
 
         }).then((res) => {
-            document.title = `Lyrics Finder - ${res.data.track[0].name}`
+            // document.title = `Lyrics Finder - ${res.data.track[0].name}`
             setTrack(res.data.tracks[0])
             getLyrics();
         }).catch((err) => {
-            if (err.response.status == 429) {
-                setIsLimit(true)
-            } else {
-                setIsError(true)
-            }
+            console.log(err)
         })
 
     }
@@ -77,7 +73,7 @@ const Lyrics = () => {
                                             The request limit per month is full. <br/>
                                             Please try again next month or upgrade your API plan. <br/>
                                             Please get in touch with the developer below : <br/>
-                                            <a href="https://github.com/vinss-droid" className="text-decoration-none" target="_blank">
+                                            <a href="https://github.com/vinss-droid" className="text-decoration-none" target="_blank" rel="noreferrer">
                                                 <i className="fa-brands fa-github"></i> vinss-droid
                                             </a>
                                         </span>
@@ -99,7 +95,7 @@ const Lyrics = () => {
                                                             {track.album.artists[0].name} | {track.name}
                                                         </h5>
                                                         <hr/>
-                                                        <a href={track.external_urls.spotify} className="btn btn-primary d-block" target="_blank">
+                                                        <a href={track.external_urls.spotify} className="btn btn-primary d-block" target="_blank" rel="noreferrer">
                                                             <i className="fa-brands fa-spotify"></i> Play on Spotify
                                                         </a>
                                                         <hr/>
